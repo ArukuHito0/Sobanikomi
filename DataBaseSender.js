@@ -1,11 +1,14 @@
-const { createClient } = require('@supabase/supabase-js');
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 /**
- * @typedef {Object} ComplessedTweetData
+ * @typedef {Object} CompressedTweetData
  * @property {'save'|'load'|'count'} action - 実行する操作 (保存'save' / 取得'load' / カウント'count')
  * @property {string} [key] - ツイートIDまたはURL
  * @property {string} [FromLocation] - 送り主の県名
@@ -14,9 +17,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 /**
  * ツイートデータのDB操作を行うメイン関数
- * @param {ComplessedTweetData} options
+ * @param {CompressedTweetData} options
  */
-async function handleTweetData({ action, key, FromLocation, ToLocation }) {
+export async function handleTweetData({ action, key, FromLocation, ToLocation }) {
   try {
     // 1. 保存処理 (save)
     if (action === 'save') {
@@ -98,6 +101,6 @@ async function handleTweetData({ action, key, FromLocation, ToLocation }) {
   }
 }
 
-module.exports = {
+export default {
   handleTweetData
 };

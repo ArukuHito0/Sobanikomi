@@ -1,5 +1,6 @@
 //.envに保存されたAPIキーの取得
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 class APISender{
     constructor(){
@@ -59,4 +60,4 @@ class APISender{
 }
 
 
-module.exports = APISender;
+export default APISender;

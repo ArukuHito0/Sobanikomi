@@ -51,10 +51,7 @@ class SpreadSheetAccessor{
 
         params.append("sheetUrl", this.sheetUrl);
         params.append("sheetName", this.sheetName);
-        params.append("key", data.key);
-        params.append("location", data.location);
-        params.append("text", data.text);
-        params.append("reason", data.reason);
+        params.append("tweets", JSON.stringify(data));
 
         // GASのデプロイにアクセスしてデータを送る
         const response = await fetch(SpreadSheetAccessor.deploy_url, {
@@ -67,8 +64,10 @@ class SpreadSheetAccessor{
             throw new Error(`GASへの送信に失敗：${response.status}`);            
         }
 
-        return await response.text();
+        return new Promise((resolve, reject) => {
+            resolve("GASへの送信に成功");
+        }) 
     }
 }
 
-module.exports = SpreadSheetAccessor;
+export default SpreadSheetAccessor;

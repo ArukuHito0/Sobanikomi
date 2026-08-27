@@ -2,8 +2,8 @@
 class CompressedTweetData{
     constructor(key, from, to){
         this.key = key;             // ポストのURL
-        this.fromLocation = from;   // ポストの位置
-        this.toLocation = to;   // ポストの位置
+        this.from = from;   // ポストの位置
+        this.to = to;   // ポストの位置
     }
 }
 

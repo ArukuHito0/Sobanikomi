@@ -1,3 +1,5 @@
+import { PREFACTURES, PREFACTURES_SHORT } from "./prefactureLists.js";
+
 const dictionary_prefacture_to_region = {
 北海道: '北海道',
 青森: '東北', 岩手: '東北', 秋田: '東北', 宮城: '東北', 山形: '東北', 福島: '東北',
@@ -26,12 +28,24 @@ const dictionary_prefacture_to_romaji = {
 沖縄: 'okinawa'
 }
 
-const UNKNOWN_LOCATION = 'unknown';
+export const UNKNOWN_LOCATION = 'unknown';
 
 export function getShortPrefactureFromPrefacture(prefacture) {
     const shortKey = prefacture.replace(/(都|府|県)$/, '');
     if (shortKey in dictionary_prefacture_to_region) return shortKey;
     return UNKNOWN_LOCATION;
+}
+
+export function isShortPrefacture(prefactureKey) {
+    return PREFACTURES_SHORT.includes(prefactureKey);
+}
+
+export function isLongPrefacture(prefactureKey) {
+    return PREFACTURES.includes(prefactureKey);
+}
+
+export function isPrefacture(prefactureKey) {
+    return isShortPrefacture(prefactureKey) || isLongPrefacture(prefactureKey);
 }
 
 // / 都道府県から地方へ変換

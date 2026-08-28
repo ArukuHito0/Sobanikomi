@@ -1,7 +1,8 @@
 // スプレッドシートに保存するデータをまとめておくクラス
 class DecompressedTweetData{
-    constructor(key, from, to, text, reason){
+    constructor(key, author, from, to, text, reason){
         this.key = key;             // ポストのURL
+        this.author = author;   // ポスト主
         this.from = from;   // ポストの位置
         this.to = to;   // ポストの位置
         this.text = text;           // ボスト内容

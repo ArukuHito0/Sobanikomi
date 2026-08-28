@@ -4,7 +4,6 @@ const VALID_CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01
 const VALID_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 const VALID_NUMBERS = '0123456789';
 
-
 function RandomRange(max, min = 0) {
     if (isNaN(min) || isNaN(max)) throw Error('Input is NaN');
     return Math.floor((Math.random() * max) + min);

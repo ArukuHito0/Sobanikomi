@@ -33,6 +33,7 @@ function GetToLocationTag(tweets, prefix) {
 export function TweetsToDecompressedTweetData(tweets, reason = 'debug') {
     return new DecompressedTweetData(
         tweets.id,
+        tweets.author.id,
         GetFromLocationTag(tweets),
         GetToLocationTag(tweets, 'そばに'),
         tweets.text,
@@ -43,7 +44,9 @@ export function TweetsToDecompressedTweetData(tweets, reason = 'debug') {
 export function TweetsToCompressedTweetData(tweets) {
     return new CompressedTweetData(
         tweets.id,
+        tweets.author.id,
         GetFromLocationTag(tweets),
-        GetToLocationTag(tweets, 'そばに')
+        GetToLocationTag(tweets, 'そばに'),
+        tweets.text
     );
 }
